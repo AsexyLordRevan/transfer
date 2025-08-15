@@ -1,0 +1,342 @@
+@import "../coloursgtk.css";
+
+/* Global Settings */
+* {
+    font-size: 14px;
+    border-radius: 0 0 10px 10px;
+}
+
+window#waybar {
+    font-family: SF Pro;
+    background-color: transparent;
+    color: @txt;
+}
+
+/* Module Positioning */
+.modules-right {
+    margin: 0 0px 0 3px;
+    padding: 0 4px 0 0;
+}
+
+.modules-center {
+    font-weight: bold;
+    padding: 0 5px;
+}
+
+/* Workspaces */
+#workspaces {
+    margin: 0;
+    border-radius: 10px;
+}
+
+#workspaces button {
+    background-color: alpha(@bg1, 0.7);
+    padding: 0 5px 0 5px;
+    border-bottom: 3px solid @red;
+    border-radius: 0;
+}
+
+#workspaces button.active {
+    border-bottom: 3px solid @yellow;
+}
+
+#workspaces button:first-child,
+#workspaces button:first-child.active {
+    padding-left: 5px;
+}
+
+#workspaces button:first-child {
+    border-left:0px;
+
+}
+
+#workspaces button:first-child.active {
+    border-left-color: @yellow;
+}
+
+#workspaces button:last-child,
+#workspaces button:last-child.active {
+    border-radius: 0 0 10px 0;
+    border-right: 3px solid;
+}
+
+#workspaces button:last-child {
+    border-right-color: @red;
+}
+
+#workspaces button:last-child.active {
+    border-right-color: @yellow;
+}
+
+/* General Module Styling */
+#clock, #menu,
+#battery, #power-profiles-daemon,
+#network, #bluetooth, #kbds,
+#custom-light, #backlight, #wireplumber, #clock, #menu,
+#wireplumber.full, #custom-music,
+#custom-musicstatus, #mpris {
+    padding: 2px 7px;
+    color: @txt;
+}
+
+#workspacetc, #stuff, #window, #AV, #wireless, #power, #clock {
+    background-color: alpha(@bg1, 0.7);
+}
+
+/* Default ones */
+#clock, #window, #menu, #info {
+    border-radius: 0 0 10px 10px;
+    border-bottom: 3px solid @red;
+    border-right: 3px solid @red;
+    border-left: 3px solid @red;
+}
+
+#center {
+    background-color: alpha(@bg1, 0.7);
+}
+
+#window, #submap {
+    padding: 2px 7px;
+}
+
+/* Power */
+#power {
+    padding: 0;
+    color: @txt;
+}
+
+#power-profiles-daemon {
+    border-radius: 0 0 0 10px;
+    border-bottom: 3px solid @red;
+    border-left: 3px solid @red;
+}
+#power-profiles-daemon.power-saver {
+    border-bottom: 3px solid @green;
+    border-left: 3px solid @green;
+}
+#power-profiles-daemon.balanced {
+    border-bottom: 3px solid @yellow;
+    border-left: 3px solid @yellow;
+}
+#power-profiles-daemon.performance {
+    border-bottom: 3px solid @red;
+    border-left: 3px solid @red;
+}
+
+#language.full{
+    padding-left: 9px
+}
+
+/* Battery */
+#battery {
+    border-radius: 0 0 10px 0;
+    border-bottom: 3px solid @red;
+    border-right: 3px solid @red;
+}
+#battery.charging,
+#battery.plugged {
+    border-bottom: 3px solid @green;
+    border-right: 3px solid @green;
+}
+
+/* Network */
+#network {
+    border-radius: 0 0 10px 0;
+    border-bottom: 3px solid @green;
+    border-right: 3px solid @green;
+}
+#network.disconnected {
+    border-bottom: 3px solid @yellow;
+    border-right: 3px solid @yellow;
+}
+#network.disabled {
+    border-bottom: 3px solid @red;
+    border-left: 3px solid @red;
+    border-right: 3px solid @red;
+}
+
+/* Bluetooth */
+#bluetooth {
+    border-radius: 0 0 0 10px;
+    border-bottom: 3px solid @yellow;
+    border-left: 3px solid @yellow;
+}
+#bluetooth.connected {
+    border-bottom: 3px solid @green;
+    border-left: 3px solid @green;
+}
+#bluetooth.off {
+    border-bottom: 3px solid @red;
+    border-left: 3px solid @red;
+}
+
+/* Music */
+#custom-music {
+    border-radius: 0 0 0 10px;
+    padding-left: 8px;
+}
+#custom-music.Playing,
+#custom-musicstatus.Playing {
+    border-bottom: 3px solid @green;
+    border-left: 3px solid @green;
+}
+#custom-music.Paused,
+#custom-musicstatus.Paused {
+    border-bottom: 3px solid @yellow;
+    border-left: 3px solid @yellow;
+}
+#custom-music.Stopped,
+#custom-musicstatus.Stopped {
+    border-bottom: 3px solid @red;
+    border-left: 3px solid @red;
+}
+
+/* Music Status */
+#custom-musicstatus {
+    border-radius: 0 0 0 10px;
+    border-bottom: 3px solid @red;
+    border-left: 3px solid @red;
+}
+
+/* MPRIS */
+#mpris {
+    border-bottom: 3px solid @red;
+    border-radius: 0;
+}
+#mpris.playing {
+    border-bottom: 3px solid @green;
+}
+#mpris.paused {
+    border-bottom: 3px solid @yellow;
+}
+#mpris.Stopped {
+    border-bottom: 3px solid @red;
+}
+
+/* Language */
+#kbds {
+    border-radius: 0 0 10px 0;
+    border-bottom: 3px solid @red;
+    border-right: 3px solid @red;
+}
+
+/* Backlight */
+#backlight {
+    border-bottom: 3px solid @red;
+    border-radius: 0;
+}
+#backlight.lowest {
+    border-bottom: 3px solid @blue;
+}
+#backlight.low {
+    border-bottom: 3px solid @green;
+}
+#backlight.medium {
+    border-bottom: 3px solid @yellow;
+}
+#backlight.high {
+    border-bottom: 3px solid @red;
+}
+#backlight.highest {
+    border-bottom: 3px solid @mauve;
+}
+
+/* Custom Light */
+#backlight.icon {
+    border-bottom: 3px solid @red;
+    border-right: 3px solid @red;
+    border-radius: 0 0 10px 0;
+}
+#backlight.icon.lowest {
+    border-bottom: 3px solid @blue;
+    border-right: 3px solid @blue;
+}
+#backlight.icon.low {
+    border-bottom: 3px solid @green;
+    border-right: 3px solid @green;
+}
+#backlight.icon.medium {
+    border-bottom: 3px solid @yellow;
+    border-right: 3px solid @yellow;
+}
+#backlight.icon.high {
+    border-bottom: 3px solid @red;
+    border-right: 3px solid @red;
+}
+#backlight.icon.highest {
+    border-bottom: 3px solid @mauve;
+    border-right: 3px solid @mauve;
+}
+
+/* Wireplumber */
+#wireplumber {
+    border-radius: 0 0 0 10px;
+    border-bottom: 3px solid @red;
+    border-left: 3px solid @red;
+}
+#wireplumber.muted, #wireplumber.nothing {
+    border-bottom: 3px solid @blue;
+    border-left: 3px solid @blue;
+}
+#wireplumber.lowest {
+    border-bottom: 3px solid @green;
+    border-left: 3px solid @green;
+}
+#wireplumber.low {
+    border-bottom: 3px solid @yellow;
+    border-left: 3px solid @yellow;
+}
+#wireplumber.medium {
+    border-bottom: 3px solid @orange;
+    border-left: 3px solid @orange;
+}
+#wireplumber.high {
+    border-bottom: 3px solid @red;
+    border-left: 3px solid @red;
+}
+#wireplumber.highest {
+    border-bottom: 3px solid @mauve;
+    border-left: 3px solid @mauve;
+}
+
+/* Wireplumber Full */
+#wireplumber.full {
+    border: none;
+    border-bottom: 3px solid @red;
+    border-radius: 0;
+}
+#wireplumber.full.muted, #wireplumber.full.nothing {
+    border-bottom: 3px solid @blue;
+}
+#wireplumber.full.lowest {
+    border-bottom: 3px solid @green;
+}
+#wireplumber.full.low {
+    border-bottom: 3px solid @yellow;
+}
+#wireplumber.full.medium {
+    border-bottom: 3px solid @orange;
+}
+#wireplumber.full.high {
+    border-bottom: 3px solid @red;
+}
+#wireplumber.full.highest {
+    border-bottom: 3px solid @mauve;
+}
+
+#info {
+    border-radius: 0 0 0px 10;
+    border-bottom: 3px solid @red;
+    border-left: 3px solid @red;
+    border-right: 0px;
+    padding: 2px 7px;
+    background-color: alpha(@bg1, 0.7);
+}
+
+#workspacestc {
+    border-radius: 0 0 10px 0;
+    border-bottom: 3px solid @red;
+    border-right: 3px solid @red;
+    border-left: 0px;
+
+}

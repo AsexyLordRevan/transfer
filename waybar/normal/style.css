@@ -1,0 +1,87 @@
+@import "../coloursgtk.css";  
+
+/* Global Settings */  
+* {  
+    font-size: 14px;  
+    border-radius: 5px;  
+}  
+
+window#waybar {  
+    font-family: SF Pro;  
+    background-color: alpha(@bg1, 0.7);  
+    color: @txt;  
+    padding: 0px;  
+    border-radius: 10px;  
+    border: 3px solid @red;  
+}  
+
+/* Module Settings */  
+.modules-right {  
+    margin: 3px 3px 3px 0px;  
+    border-radius: 9px;
+    padding: 0px 0px 0px 0px;  
+    background-color: @bg1;  
+}  
+
+.modules-center {  
+    margin: 5px 0 5px 0;  
+    font-weight: bold;  
+}  
+
+.modules-left {  
+    margin: 3px 0px 3px 3px;  
+    padding: 1px 0 0 4px;  
+}  
+
+/* Workspaces */  
+#workspaces button {  
+    background-color: transparent;  
+    color: @txt;  
+    border-radius: 0;  
+    padding: 0px 5px 0px 5px;  
+}  
+
+#workspaces button:first-child {  
+    border-radius: 5px 0 0 5px;  
+}  
+
+#workspaces button:last-child {  
+    border-radius: 0 5px 5px 0;  
+}  
+
+#workspaces button.active {  
+    color: @yellow;  
+}  
+
+#workspaces button.urgent {  
+    color: @mauve;  
+}  
+
+/* If workspaces is the leftmost module, omit left margin */  
+.modules-left > widget:first-child > #workspaces {  
+    margin-left: 0;  
+}  
+
+/* If workspaces is the rightmost module, omit right margin */  
+.modules-right > widget:last-child > #workspaces {  
+    margin-right: 0;  
+}  
+
+/* Individual modules */  
+#battery.charging, #battery.plugged {  
+    background-color: @green;  
+    color: @bg1;  
+}  
+
+#wireplumber.muted {  
+    background-color: @blue;  
+}  
+
+#mpris {  
+    padding: 0 5px 0 5px;  
+}  
+
+#clock, #bluetooth, #network, #battery, #backlight, #wireplumber {  
+    padding: 0 5px 0 5px;  
+    color: @txt;  
+}  

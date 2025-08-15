@@ -1,0 +1,129 @@
+// -*- mode: jsonc -*-
+[{
+    "height": 33,
+    "spacing": 4,
+    "margin-top": 4,
+    "margin-left": 4,
+    "position": "top",
+    "margin-right": 4,
+    "reload_style_on_change": true,
+    // Modules in order from left to right
+    "modules-left": [
+        "custom/menu",
+        "hyprland/workspaces",
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+	"wireplumber",
+        "backlight",
+	"bluetooth",
+	"battery",
+	"network",
+        "custom/qt",
+    ],
+    // Module configurations
+    "custom/menu":{
+        "format":"AS",
+        "on-click":"bash ~/.config/rofi/scripts/theme.sh"
+    },
+    "hyprland/workspaces": {
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "enable-bar-scroll": true,
+        "disable-scroll-wraparound": true,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+	    "6": "6",
+	    "7": "7",
+	    "8": "8",
+            "9": "9",
+            "10": "10"
+        }
+    },
+    "hyprland/window": {
+        "format": "{class}",
+        "max-length": 30,
+        "all-outputs": true,
+	"rewrite": {
+        	"vivaldi-stable": "vivaldi",
+        	"code-oss": "vs-code"
+	 }
+    },
+    "mpris": {
+ 	"format": "{status_icon}  {title} -  {artist}",
+	"artist-len": 10,
+	"title-len": 30,
+        "interval": 1,
+        "dynamic-len": 40,
+	"status-icons": {
+		"playing": "▶",
+		"paused": "⏸",
+		"stopped": ""
+	},
+	"on-click": "bash ~/.config/rofi/scripts/music.sh"
+    },
+    "custom/qt": {
+	"exec": "bash ~/.config/waybar/zen/quartertime.sh",
+	"interval": 60,
+	"format": "{} ",
+	"tooltip": false
+    },
+
+
+    "bluetooth":{
+	"format-connected":"󰂯  {device_battery_percentage}% ",
+	"format-on": "󰂯",
+	"on-click": "  bash ~/.config/rofi/scripts/bluetooth.sh"
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}   {capacity}",
+        "format-charging": "  {capacity}",
+        "format-plugged": " {capacity}",
+        //"format-good": "", // An empty format will hide the module
+        //"format-full": "",
+        "format-icons": ["", "", "", "", ""],
+	"on-click": "  bash ~/.config/rofi/scripts/power.sh"
+	},
+    "wireplumber": {
+        "scroll-step": 5, // %, can be a float
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}% ",
+        "format-bluetooth-muted": " {icon} ",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", "  "]
+        }
+    },
+    "custom/mako": {
+	"on-click": "bash ~/.config/mako/waybar.sh"
+    },
+    "network":{
+	"format-wifi":" ",
+	"format-disconnected":"󰖪 ",
+	"format": "󰤭 ",
+	"on-click": "  bash ~/.config/rofi/scripts/rofi_iwd.sh"
+}
+}]

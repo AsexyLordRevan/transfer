@@ -1,0 +1,173 @@
+// Config //
+configuration {
+    modi:                        "drun,filebrowser,run";
+    show-icons:                  true;
+    display-drun:                "";
+    display-run:                 "";
+    display-filebrowser:         "";
+    drun-display-format:         "{name}";
+
+    window-format:               "{w}{t}";
+    font:                        "Fira Code 10";
+    icon-theme:                  "Tela-circle-dracula";
+}
+
+@theme "/dev/null"
+
+
+// Main //
+window {
+    height:                      330px;
+    width:                       1280px;
+    transparency:                "real";
+    fullscreen:                  false;
+    location:                    south;
+    ancor:                       south;
+    enabled:                     true;
+    cursor:                      "default";
+    spacing:                     0px;
+    padding:                     0px;
+    border-radius:               10px 10px 0px 0px;
+    border:                      0px;
+    border-color:              #red;
+    background-color:            transparent;
+
+}
+mainbox {
+    enabled:                     true;
+    spacing:                     0px;
+    padding:                     0px;
+    orientation: vertical;
+    margin: 0px;
+    children:                    [ "listbox", "inputbar" ];
+    background-color:            transparent;
+}
+
+
+
+// Inputs //
+inputbar {
+    enabled:                     true;
+    children:                    [ "entry" ];
+    background-color:          #bg1b3;
+    border: 3px 3px 0px 3px;
+    border-radius: 10px 10px 0px 0px;
+    border-color: #red;
+    margin: 0px 500px 0px 500px;
+}
+entry {
+    enabled:                     true;
+    color:                     #txt;
+    padding: 10px 10px 10px 15px;
+    placeholder: "Search";
+    background-color: transparent;
+    vertical-align:0.5;
+    margin:2px 0px 0px 0px;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    background-color: transparent;
+    str: ":";
+}
+
+// Lists //
+listbox {
+    padding:                     0px;
+    spacing:                     0px;
+    orientation:                 horizontal;
+    children:                    [ "listview" , "mode-switcher" ];
+    background-color:            transparent;
+
+}
+listview {
+    padding:                     10px 10px 10px 0px;
+    spacing:                     10px;
+    enabled:                     true;
+    columns:                     1;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                false;
+    fixed-columns:               true;
+    cursor:                      "default";
+    background-color:            transparent;
+    text-color:                  #txt;
+}
+
+
+// Modes //
+mode-switcher {
+    orientation:                 vertical;
+    enabled:                     true;
+    background-color:            transparent;
+    margin: 0px 0px 20px 0px;
+}
+button {
+    cursor:                      pointer;
+    padding:                     25px 20px 25px 25px;
+    spacing:                     200px;
+    border-radius:               10px 0px 0px 10px;
+    background-color:            #bg1b3;
+    text-color:                  #txt;
+    margin: 10px 0px 0px 0px;
+    border-color: #red;
+    font: "SF Pro 14";
+    border: 3px 0px 3px 3px;
+    vertical-align: 0.5;
+    horizontal-align:1;
+}
+button selected {
+    background-color: #bg1b3;
+    text-color:                  #txt;
+    border-color: #green;
+}
+
+
+// Elements //
+element {
+    orientation:                 horizontal;
+    enabled:                     true;
+    margin: 2px 900px 0px 0px;
+    spacing:                     0px;
+    padding:                     25px;
+    cursor:                      pointer;
+    border-radius:               0px 10px 10px 0px;
+    border: 3px 3px 3px 0px;
+    border-color: #red;
+    background-color: #bg1b3;   
+    text-color: #txt; 
+    
+}
+element selected.normal {
+    border-color: #green;
+    background-color: #bg1b3;
+}
+element-icon {
+    size:                        22px;  // 5.5em * 10px
+    background-color:            transparent;
+}
+element-text {
+    horizontal-align:              0;
+    padding:0px 0px 0px 10px;
+    vertical-align:0.5;
+    background-color:            transparent;
+    text-color: inherit;
+}
+
+// Error message //
+error-message {
+    text-color:                  #txt;
+    text-transform:              capitalize;
+    children:                    [ "textbox" ];
+    background-color: transparent;
+}
+
+textbox {
+    text-color:                  inherit;
+    background-color: transparent;
+    vertical-align:              5px;
+    horizontal-align:            5px;
+}

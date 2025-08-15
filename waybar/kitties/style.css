@@ -1,0 +1,79 @@
+@import "../coloursgtk.css";  
+
+* {
+  border: none;
+  font-family: "SF Pro";
+  font-size: 14px;
+  font-weight: 600;
+  background: none;
+}
+
+window#waybar {
+  color: @blue;
+}
+.modules-left,
+.modules-right,
+.modules-center {
+  border-radius: 6px;
+  background: @bg1;
+  padding: 12px 0;
+}
+tooltip {
+  color: @blue;
+  background-color: @bg1;
+  text-shadow: none;
+}
+
+tooltip * {
+  color: @blue;
+  text-shadow: none;
+}
+.modules-center {
+}
+
+#custom-sep {
+  color: @st2;
+  margin: 4px 0;
+}
+#workspaces,
+#clock,
+#custom-bluetooth_devices,
+#custom-powermenu,
+#pulseaudio,
+#tray {
+}
+#workspaces {
+  border-radius: 4px;
+}
+#workspaces button {
+  color: @st2;
+  background: none;
+  padding: 0;
+}
+#workspaces button:hover {
+  color: @green;
+}
+#workspaces button.active {
+  color: @mauve;
+}
+#temperature {
+  color: @yellow;
+}
+#clock {
+  font-weight: 600;
+  color: @green;
+}
+#custom-bluetooth_devices {
+  color: @blue;
+}
+#pulseaudio {
+  color: @green;
+}
+#pulseaudio.muted {
+  color: @red;
+}
+
+#custom-powermenu {
+  margin: 12px 0 0 0;
+  color: @st2;
+}

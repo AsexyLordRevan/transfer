@@ -1,0 +1,75 @@
+@import  "../coloursgtk.css";
+* {
+	font-size: 14px;
+	font-family: monospace;
+}
+
+window#waybar {
+	background: @bg1;
+ 	color: @txt;
+}
+
+#custom-right-arrow-dark,
+#custom-left-arrow-dark {
+	color: @bg2;
+}
+#custom-right-arrow-light,
+#custom-left-arrow-light {
+	color: @bg1;
+	background: @bg2;
+}
+
+#workspaces,
+#clock.1,
+#clock.2,
+#clock.3,
+#pulseaudio,
+#memory,
+#cpu,
+#battery,
+#disk,
+#tray {
+	background: @bg2;
+}
+
+#workspaces button {
+	padding: 0 2px;
+	color: @txt;
+}
+#workspaces button.focused {
+	color: @blue;
+}
+#workspaces button:hover {
+	box-shadow: inherit;
+	text-shadow: inherit;
+}
+#workspaces button:hover {
+	background: @bg2;
+	border: @bg2;
+	padding: 0 3px;
+}
+
+#pulseaudio {
+	color: @blue;
+}
+#memory {
+	color: @orange;
+}
+#cpu {
+	color: @mauve;
+}
+#battery {
+	color: @green;
+}
+#disk {
+	color: @yellow;
+}
+
+#clock,
+#pulseaudio,
+#memory,
+#cpu,
+#battery,
+#disk {
+	padding: 0 10px;
+}

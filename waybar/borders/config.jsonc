@@ -1,0 +1,287 @@
+// -*- mode: jsonc -*-
+[{
+    "height": 33,
+    "spacing": 4,
+    "margin-top": -3,
+    "margin-left": 4,
+    "position": "top",
+    "exclusive": true,
+    "margin-right": 4,
+    "reload_style_on_change": true,
+    // Modules in order from left to right
+    "modules-left": [
+	    "group/workspacesetc",
+        "group/stuff",
+    ],
+    "modules-center": [
+        "hyprland/window",
+    ],
+    "modules-right": [
+	    "group/AV",
+	    "group/wireless",
+        "group/power",
+        "clock"
+    ],
+    "group/workspacesetc": {
+        "orientation": "inherit",
+        "modules": [
+            "group/info",
+            "hyprland/workspaces"
+        ]
+    },
+    "group/info": {
+        "orientation": "inherit",
+	    "drawer" : {
+		"transition-duration" : 350,
+	    },
+        "modules": [
+	    "custom/info_logo",
+        "custom/hostname",
+        "cpu",
+	    "memory",
+	    "temperature"
+        ]
+    
+    },
+    "group/power":{
+	"orientation":"inherit",
+	"modules" : [
+	    "power-profiles-daemon",
+	    "battery"
+	]
+    },
+    "group/wireless": {
+        "orientation": "inherit",
+        "modules": [
+            "bluetooth",
+            "network"
+        ]
+    },
+    "group/AV": {
+        "orientation": "inherit",
+        "modules": [
+            "group/audio",
+            "group/lights"
+        ]
+    },
+    "group/audio": {
+        "orientation": "inherit",
+        "modules": [
+            "wireplumber",
+            "wireplumber#full"
+        ],
+        "drawer":{
+            "transition-duration": 350,
+            "children-class": "audio-drawer",
+        }
+    },
+    "group/lights": {
+        "orientation": "inherit",
+        "modules": [
+            "backlight#icon",
+            "backlight"
+        ],
+        "drawer":{
+            "transition-duration": 350,
+            "transition-left-to-right": false,
+            "children-class": "backlight-drawer"
+        }
+    },
+    // Module configurations
+
+    "hyprland/workspaces": {
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "enable-bar-scroll": true,
+        "disable-scroll-wraparound": true,
+        "format": "",
+    },
+    "hyprland/window": {
+        "format": "{class}",
+        "max-length": 30,
+        "all-outputs": true,
+        "on-click" : "eww open --toggle dashboard",
+	"rewrite": {
+        	"vivaldi-stable": "Vivaldi",
+        	"code-oss": "vs-code",
+            "" :"Desktop"
+	 }
+    },
+    "hyprland/submap": {
+        "format": "{}",
+        "max-length": 30,
+        "always-on": true,
+        "rewrite": {
+            "default": "Default",
+            "floating": "Floating",
+            "fullscreen": "Fullscreen",
+            "tiled": "Tiled"
+        }
+    },
+    "group/stuff": {
+        "orientation": "inherit",
+        "modules": [
+            "group/music",
+            "group/kbds"
+        ]
+    },
+    "group/music": {
+        "orientation": "inherit",
+        "modules": [
+            "custom/musicstatus",
+            "mpris"
+        ],
+        "drawer": {
+            "transition-duration": 350,
+            "transition-left-to-right": true
+        }
+    },
+    "group/kbds": {
+        "orientation": "inherit",
+        "modules": [
+            "hyprland/language",
+            "hyprland/language#full"
+        ],
+        "drawer": {
+            "transition-duration": 350,
+            "transition-left-to-right": true
+        }
+    },
+    "custom/musicstatus": {
+        "format": " ",
+        "exec": "bash ~/.config/asexy/scripts/music.sh",
+        "return-type": "json",
+        "on-click": "playerctl play-pause",
+        "on-click": "eww open --toggle playingBig"
+    },
+    "mpris": {
+        "format": "{title}",
+        "tooltip": "false",
+        "title-len": 30,
+        "on-click": "eww open --toggle playingBig"
+    },
+    "hyprland/language":{
+        "format-es": "󰌌 ",
+        "format-en": " ",
+        "on-click": "hyprctl switchxkblayout all prev"
+    },
+    "hyprland/language#full": {
+        "format": "{}",
+        "on-click": "hyprctl switchxkblayout all next",
+        "tooltip": "false"
+    },
+
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "bluetooth":{
+	    "format-connected":"󰂯  {device_battery_percentage}% ",
+	    "format-on": "󰂯",
+	"on-click": "  bash ~/.config/rofi/scripts/bluetooth.sh"
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}",
+        "device": "eDP-1",
+        "interval": 2,
+        "states": {
+            "nothing": 0,
+            "lowest": 20,
+            "low": 40,
+            "medium": 60,
+            "high": 80,
+            "highest": 100
+        },
+        "on-scroll-up": "brightnessctl --device=acpi_video0 set '1+'",
+        "on-scroll-down": "brightnessctl --device=acpi_video0 set '1-'",
+        
+    },
+    "backlight#icon": {
+        "format": "",
+        "interval": 2,
+        "return-type": "json",
+        "on-scroll-up": "brightnessctl --device=acpi_video0 set '1+'",
+        "on-scroll-down": "brightnessctl --device=acpi_video0 set '1-'",
+        "states": {
+            "nothing": 0,
+            "lowest": 20,
+            "low": 40,
+            "medium": 60,
+            "high": 80,
+            "highest": 100
+        },
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{capacity}",
+        "format-charging": "{capacity}",
+        "format-plugged": "{capacity}",
+        //"format-good": "", // An empty format will hide the module
+        //"format-full": "",
+        "format-icons": ["", "", "", "", ""],
+	"on-click": "  bash ~/.config/rofi/scripts/power.sh"
+	},
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "format-icons": {
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        },
+        "on-click": "bash ~/.config/rofi/scripts/power_profiles.sh"
+    },
+    "custom/info_logo" : {
+	"format" : "  ",
+    },
+    "custom/hostname" : {
+    "format" : " {} ",
+    "exec" : "hostname"
+    },
+    "cpu":{
+	"format" : "   {usage}  ",
+    },
+    "memory":{
+	"format" : "󰍛  {percentage}  "
+    },
+    "temperature":{
+	"format": "  {temperatureC}"
+    },
+    "wireplumber": {
+        "scroll-step": 5, // %, can be a float
+        "format": "",
+        "states": {
+            "nothing": 0,
+            "lowest": 20,
+            "low": 40,
+            "medium": 60,
+            "high": 80,
+            "highest": 100
+        },
+
+    },
+    "wireplumber#full": {
+        "format": "{volume}",   
+        "states": {
+            "nothing": 0,
+            "lowest": 20,
+            "low": 40,
+            "medium": 60,
+            "high": 80,
+            "highest": 101
+        }, 
+    },
+    "custom/mako": {
+	"on-click": "bash ~/.config/mako/waybar.sh"
+    },
+    "network":{
+	"format-wifi":" ",
+	"format-disconnected":"󰖪 ",
+	"format": "󰤭 ",
+	"on-click": "  bash ~/.config/rofi/scripts/rofi_iwd.sh"
+}
+}]
