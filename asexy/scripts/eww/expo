@@ -1,0 +1,48 @@
+#!/bin/bash
+# ~/.config/eww/scripts/workspace_windows.sh
+
+map_icon() {
+  case "$1" in
+    firefox|vivaldi-stable|chrome) echo "󰾔" ;;
+    code|Code|code-oss) echo "󰨞" ;;
+    kitty|alacritty|foot) echo "" ;;
+    thunar|pcmanfm) echo "" ;;
+    discord) echo "" ;;
+    walc|signal|telegram) echo "󰍩" ;;
+    steam) echo "󰓓" ;;
+    vlc|mpv) echo "" ;;
+    *) echo "" ;;
+  esac
+}
+
+# Initialize workspace arrays
+declare -A ws_icons
+declare -A ws_titles
+for i in {1..6}; do
+  ws_icons[$i]=""
+  ws_titles[$i]=""
+done
+
+# Get clients
+while IFS= read -r line; do
+  ws_id=$(echo "$line" | jq -r '.ws')
+  class=$(echo "$line" | jq -r '.class')
+  title=$(echo "$line" | jq -r '.class')
+
+  icon=$(map_icon "$class")
+  ws_icons[$ws_id]+="$icon "
+  ws_titles[$ws_id]+="$title | "
+done < <(hyprctl clients -j | jq -c '.[] | {ws: .workspace.id, class: .class, title: .title}')
+
+# Output JSON
+echo "["
+first=1
+for ws in $(seq 1 6); do
+  [[ $first -eq 0 ]] && echo ","
+  first=0
+  titles=$(echo "${ws_titles[$ws]}" | sed 's/ | $//')
+  icons="${ws_icons[$ws]}"
+  printf '{"workspace": %d, "icons": "%s", "titles": "%s"}' \
+    "$ws" "$icons" "$titles"
+done
+echo "]"

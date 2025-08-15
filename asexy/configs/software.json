@@ -1,0 +1,9 @@
+[
+	{"name":"hyprland", "location":"~/.config/hypr", "format":"colours.conf"},
+	{"name":"rofi", "location":"~/.config/rofi/config.rasi", "format":"search&replace"},
+	{"name":"rofi script", "location":"~/.config/rofi/script.rasi", "format":"search&replace"},
+	{"name":"rofi icons", "location":"~/.config/rofi/icons.rasi", "format":"search&replace"},
+	{"name":"kitty", "location":"~/.config/kitty/themes/asexy.conf", "format":"search&replace"},
+	{"name":"eww", "location":"~/.config/eww/eww.css", "format":"search&replace"},
+	{"name":"waybar", "location":"~/.config/waybar/", "format":"coloursgtk.css"}
+]

@@ -1,0 +1,98 @@
+(defwindow modeWindow
+    :monitor 0
+    :stacking "ov"
+    :exclusive false
+    :focusable false
+    :geometry (geometry
+        :width 80
+        :height 33
+        :anchor "center bottom"
+    )
+    (modeWidget)
+)
+
+(defwidget modeWidget []
+    (label
+    :class "modeWidget"
+    :text {modeVariable}
+    :on-click (lambda (e)
+        (eww:close-window "modeWindow")
+    )
+)
+)
+
+(defvar modeVariable "Submap name")
+
+
+
+
+
+(defwindow terminalWindow
+    :monitor 0
+    :stacking "ov"
+    :exclusive false
+    :focusable true
+    :geometry (geometry
+        :width 120
+        :height 33
+        :anchor "center bottom"
+    )
+    (terminalWidget)
+)
+
+(defwidget terminalWidget []
+    (input
+        :value ""
+        :onaccept "bash -c '{}'"
+        :timeout 0
+        :class "terminalWidget"
+    )
+)
+
+(include "./touchbar.yuck")
+(include "./dashboard.yuck")
+(include "./topbar.yuck")
+(include "./workspaces.yuck")
+(defwindow calendar
+    :monitor 0
+    :stacking "ov"
+    :exclusive false
+    :focusable false
+    :geometry (geometry
+        :x 0
+        :y "0"
+        :width 400
+        :height 200
+        :anchor "top right"
+    )
+    (calendarwidget)
+)
+
+(defwidget calendarwidget []
+    (box
+        :orientation "vertical"
+        :spacing 0
+        :space-evenly false
+        (box
+            (label :text {weathericon})
+            (label :text {weathertemp})
+            (label :text {weathercondition})
+        )
+        (box
+            :orientation "vertical"
+            :space-evenly false
+            (box
+                :orientation "horizontal"
+                :space-evenly false
+                (label :text {time})
+                (label :text {date})
+            )
+            (calendar
+                :class "cal"
+                :show-details false
+                :show-heading
+                :show-day-names false
+            )
+        )
+    )
+)

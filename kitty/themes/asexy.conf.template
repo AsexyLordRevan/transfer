@@ -1,0 +1,41 @@
+foreground               #txt
+background               #bg1
+selection_foreground     #bg1
+selection_background     #txt
+
+cursor                   #txt
+cursor_text_color        #txt
+
+url_color                #blue
+
+# black
+color0   #bg3
+color8   #bg2
+
+# red
+color1   #red
+color9   #red
+
+# green
+color2   #green
+color10  #green
+
+# yellow
+color3   #yellow
+color11  #yellow
+
+# blue
+color4   #blue
+color12  #blue
+
+# magenta
+color5   #mauve
+color13  #mauve
+
+# cyan
+color6   #orange
+color14  #orange
+
+# white
+color7   #white
+color15  #white

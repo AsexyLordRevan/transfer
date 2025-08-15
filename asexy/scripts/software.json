@@ -1,0 +1,9 @@
+[
+	{"name":"hyprland", "location":"/.config/hypr", "format":"colours.conf"},
+	{"name":"rofi", "location":"~/.config/rofi/config.rasi", "format":"search&replace"},
+	{"name":"rofi", "location":"~/.config/rofi/script.rasi", "format":"search&replace"},
+	{"name":"kitty", "location":"~/.config/kitty/themes/asexy.conf", "format":"search&replace"},
+	{"name":"mako", "location":"~/.config/mako/config", "format":"search&replace"},
+	{"name":"vivaldi", "location":"~/.config/vivaldi/css", "format":"colours.css"},
+	{"name":"rofi", "location":"~/.config/rofi/icons.rasi", "format":"search&replace"}
+]

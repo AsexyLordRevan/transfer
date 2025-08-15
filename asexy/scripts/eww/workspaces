@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Get current workspaces from Hyprland
+workspaces=$(hyprctl workspaces -j)
+active_id=$(hyprctl activeworkspace -j | jq '.id')
+
+# Create array of workspace IDs 1 to 5
+declare -A workspace_map
+for i in {1..5}; do
+    workspace_map[$i]=1
+done
+
+# Add any active workspace ids > 5
+echo "$workspaces" | jq -c '.[]' | while read -r ws; do
+    id=$(echo "$ws" | jq '.id')
+    workspace_map[$id]=1
+done
+
+# Sort and output as Eww "literal"
+echo "(box :class \"workspaces\" :spacing 6"
+for id in $(printf "%s\n" "${!workspace_map[@]}" | sort -n); do
+    if [ "$id" -eq "$active_id" ]; then
+        class="focused"
+    else
+        class="unfocused"
+    fi
+
+    echo "  (button :class \"$class\" :onclick \"hyprctl dispatch workspace $id\" \"$id\")"
+done
+echo ")"

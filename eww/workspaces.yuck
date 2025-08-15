@@ -1,0 +1,24 @@
+(defwindow workspacepopup
+    :monitor 0
+    :stacking "ov"
+    :exclusive false
+    :focusable false
+    :geometry (geometry
+        :width 600
+        :height 300
+        :anchor "center bottom"
+    )
+    (workspacepopupwidget)
+)
+(defpoll workspacepopupvar
+    :interval 1
+    `bash ~/.config/asexy/scripts/eww/expo`
+)
+(defwidget workspacepopupwidget []
+    (box
+    (for ws in workspacepopupvar
+      (button :onclick "hyprctl dispatch workspace $(:workspace ws)"
+        (label :text (:icons ws) :tooltip (:titles ws))
+      )
+    ))
+  )

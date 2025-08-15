@@ -1,0 +1,7 @@
+import os
+import argparse
+
+argparse = argparse.ArgumentParser(description="Update EWW topbar configuration.")
+argparse.add_argument('--getmonth', help='Width of the time widget')
+argparse.add_argument('--getdate', help='Height of the time widget')
+argparse.add_argument('--getyear', help='X position of the time widget')

@@ -1,0 +1,493 @@
+(defwindow dashboard
+    :monitor 0
+    :stacking "ov"
+    :exclusive false
+    :focusable false
+    :geometry (geometry
+        :x 0
+        :y "0"
+        :width 400
+        :height 200
+        :anchor "center top"
+    )
+    (hardwareinfo)
+)
+
+(defwidget hardwareinfo []
+    (box
+        :orientation "vertical"
+        :space-evenly false
+        :class "fullwidget"
+        (box
+            :orientation "horizontal"
+            :space-evenly false
+            (label
+                :text {date}
+            )
+            (label
+                :text {time}
+            )
+            (label
+                :text {weathericon}
+            )
+            (box
+                :orientation "vertical" 
+                (label
+                    :text {weathercondition}
+                )
+                (label
+                    :text {weathertemp}
+                )
+            )
+        )
+        (box
+            :orientation "horizontal"
+            :spacing 10
+            :space-evenly false
+            (box
+                :orientation "vertical"
+                :spacing 10    
+                :space-evenly false
+                (box
+                    :orientation "horizontal"
+                    :spacing 10
+                    :space-evenly false
+                    :hexpand true
+                    :vexpand true
+                    (box
+                        :orientation "vertical"
+                        :spacing 0
+                        :width 180
+                        (box
+                            :orientation "vertical"
+                            :spacing 0
+                            :space-evenly false
+                            (box
+                                :orientation "horizontal"
+                                :spacing 10
+                                :space-evenly true
+                                :hexpand false
+                                :vexpand false
+                                :height 80
+                                
+                                (circular-progress
+                                    :value {rampercent}
+                                    :thickness 10
+                                    :start-at 75
+                                    :class "ramcircle"
+                                    (label :text "󰨆"
+                                        :limit-width 2
+                                        :show_truncated false
+                                        :wrap false
+                                    )
+                                )
+                                (circular-progress
+                                    :value {cpupercent}
+                                    :thickness 10
+                                    :class "cpucircle"
+                                    :start-at 75
+                                    (label :text ""
+                                        :limit-width 2
+                                        :show_truncated false
+                                        :wrap false
+                                    )
+                                )
+                                (circular-progress
+                                    :value {batpercent}
+                                    :thickness 10
+                                    :start-at 75
+                                    :class "batcircle"
+                                    (label :text ""
+                                        :class "sys_icon_bat"
+                                        :limit-width 2
+                                        :show_truncated false
+                                        :wrap false
+                                    )
+                                )
+                            )
+                            (box
+                                :orientation "horizontal"
+                                :spacing 10
+                                :space-evenly false
+                                :hexpand false
+                                :vexpand false
+                                (label
+                                    :text "Temp: ${intemp}C"
+                                    :class "sys_icon_text"
+                                )
+                                (label
+                                    :text "Fan: ${speed}"
+                                    :class "sys_icon_text"
+                                )
+                            )
+                            (label
+                                :text "${freespace}(${usedpercent})"
+                            )
+                            (box
+                                :orientation "horizontal"
+                                :spacing 10
+                                :space-evenly false
+                                (image
+                                    :image-width 24
+                                    :image-height 24
+                                    :width 24
+                                    :height 24
+                                    :path "/home/revan/Pictures/makhnopfp.png"
+                                    :class "pfp"
+                                )
+                                (label
+                                    :text {username}
+                                )
+                            )
+                            (box
+                            :orientation "horizontal"
+                            :spacing 10
+                                (button
+                                    :class "networkbutton"
+                                    :onclick "eww open wifiWindow"
+                                    (box
+                                        :orientation "vertical"
+                                        (label
+                                            :text {networkname}
+                                        )
+                                        (label
+                                        :text ""
+                                        )
+                                    )
+                                )
+                                (button
+                                    :class "bluetoothbutton"
+                                    :onclick "eww open bluetoothWindow"
+                                    (box
+                                        :orientation "vertical"
+                                        (label
+                                            :text {bluetoothcount}
+                                        )
+                                        (label
+                                        :text "󰂯"
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+
+                    (box
+                        :orientation "vertical"
+                        :spacing 10
+                        :hexpand true
+                        :vexpand true
+                        :space-evenly false
+                        (label
+                            :class "quote"
+                            :text {fullquote}
+                            :wrap true
+                            :wrap-mode "char"
+                            :truncate false
+                            :lines 3
+                            :width 100
+                            :height 80
+                            :show-truncated false
+                            :xalign "left"
+
+                        )
+                        
+                        (box
+                            :orientation "vertical"
+                            :spacing 0
+                            :space-evenly false
+                            (label
+                                :text {title}
+                            )
+                            (box
+                                :orientation "horizontal"
+                                :spacing 10
+                                :valign "start"
+                                (button
+                                    :onclick "playerctl previous"
+                                    :class "prevbutton"
+                                    (label
+                                        :text "󰑟"
+                                    )
+                                )
+                                (button
+                                    :onclick "playerctl play-pause"
+                                    :class "albumart"
+                                    (image
+                                        :path {albumart}
+                                        :image-width 20
+                                        :image-height 20
+                                    )
+                                )
+                                (button
+                                    :onclick "playerctl next"
+                                    :class "nextbutton"
+                                    (label
+                                        :text "󰈑"
+                                    )
+                                )
+                            )
+                            (label
+                                :valign "start"
+                                :text {artist}
+                            )
+                        )
+                    )
+                    
+                )
+                (box
+                    :orientation "vertical"
+                    :spacing 10
+                    (progress
+                        :value {brightness}
+                        :max 100
+                        :class "brightbar"
+                    )
+                    (progress   
+                        :value {volume}
+                        :class "volumebar"
+                        :max 100
+                    )
+                )
+            )
+            (box
+                :orientation "vertical"
+                :spacing 10
+                (button
+                    :onclick ""
+                    (label
+                        :text "1"
+                        :class "modeButton"
+                    )
+                )
+                (button
+                    :onclick ""
+                    (label
+                        :text "2"
+                        :class "modeButton"
+                    )
+                )
+                (button
+                    :onclick ""
+                    (label
+                        :text "3"
+                        :class "modeButton"
+                    )
+                )
+                (button
+                    :onclick ""
+                    (label
+                        :text "4"
+                        :class "modeButton"
+                    )
+                )
+                (button
+                    :onclick ""
+                    (label
+                        :text "5"
+                        :class "modeButton"
+                    )
+                )
+            )
+        )
+    )
+)
+(defpoll date
+    :interval "12h"
+    `LC_TIME=C date +"%A %d of %B"`
+)
+(defpoll time
+    :interval "1s"
+    `date +%H:%M`
+)
+(defpoll weathericon
+    :interval "1h"
+    `curl -s "wttr.in?format=%c"`
+)
+(defpoll weathercondition
+    :interval "1h"
+    `curl -s 'wttr.in/Novato?format=%c'`
+)
+(defpoll weathertemp
+    :interval "1h"
+    `curl -s 'wttr.in/Novato?m&format=%t' | sed 's/+//'`
+)
+(defpoll volume
+    :interval 16
+    `pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//'`
+)
+(defpoll intemp
+    :interval "1s"
+    `printf "%s" $(sensors | grep 'temp1:' | sed 's/.*+//;s/°C.*//')`
+)
+(defpoll networkname
+    :interval "300s"
+    `nmcli -t -f device,type,state,connection dev | awk -F: '$2 == "wifi" && $3 == "connected" { print $4 }'`
+)
+(defpoll bluetoothcount
+    :interval "60s"
+    `bluetoothctl info | grep -c "Connected: yes"`
+)
+(defpoll speed
+    :interval "1s"
+    `sensors | awk '/fan1:/ {print $2}'`
+)
+(defpoll brightness
+    :interval 16
+    :initial 10
+    `brightnessctl get -d acpi_video0`
+)
+(defpoll cpupercent
+    :interval 1000
+    :initial 10
+    `top -bn1 | grep "Cpu(s)" | awk '{print int(100 - $8)}'`
+)
+(defpoll fullquote
+    :interval "1h"
+    `bash /home/revan/.config/asexy/scripts/quote.sh`
+)
+(defpoll rampercent
+    :interval 1000
+    :initial 10
+    `free | awk '/Mem:/ {print int((1 - $7/$2) * 100)}'`
+)
+(defpoll freespace
+    :interval "0.5h"
+    `df -h / | awk 'NR==2 {print $4}'`
+)
+(defpoll usedpercent
+    :interval "0.5h"
+    `df -h / | awk 'NR==2 {print $5}'`
+)
+(defpoll batpercent
+    :interval 1000
+    :initial 10
+    `upower -i $(upower -e | grep BAT) | grep -E 'percentage' | awk '{gsub("%", ""); print int($2)}'`
+)
+(defwindow playingBig
+    :monitor 0
+    :stacking "ov"
+    :exclusive false
+    :focusable false
+    :geometry (geometry
+        :x 4
+        :y 4
+        :width 308
+        :height 140
+        :anchor "top left"
+    )
+    (playingInfo)
+)
+(defwidget playingInfo []
+    (box
+        :orientation "horizontal"
+        :spacing 0
+        :class "playingInfo"
+        :space-evenly false
+        (box
+            :orientation "vertical"
+            :space-evenly false
+            :class "song_prog"
+            (label
+                :text ""
+                :height 20
+            )
+            (scale
+                :value {songposition}
+                :orientation "vertical"
+                :max 100
+                :flip true   
+                :height 100 
+            )
+        )
+        (image
+            :class "bigalbumart"
+            :path {albumart}
+            :image-width 120 
+        )
+        (box
+            :orientation "vertical"
+            :spacing 0
+            :space-evenly false
+            (label
+                :class "bigplayingtitle"
+                :text {title}
+                :wrap true
+                :wrap-mode "char"
+                :truncate false
+                :limit-width 32
+                :lines 2
+                :justify "center"
+                :xalign 0.5
+                :show-truncated false
+            )
+            (label
+                :class "bigplayingartist"
+                :justify "center"
+                :text {artist}
+            )
+            (box
+                :orientation "horizontal"
+                :spacing 10
+                :class "musicbuttonbox"
+                (button
+                    :onclick "playerctl previous"
+                    :class "musicButton"
+                    (label
+                        :text "󰑟"
+                    )
+                )
+                (button
+                    :onclick "playerctl play-pause"
+                    :class "musicButton"
+                    (label
+                        :text "󰐊"
+                    )
+                )
+                (button
+                    :onclick "playerctl next"
+                    :class "musicButton"
+                   (label
+                        :text "󰈑"
+                    )
+                )
+            )
+            (label
+                :class "outofmusic"
+                :text "${played} / ${total}"
+            )
+            
+        )
+    )
+)
+
+(defpoll played
+    :interval "1s"
+    `date -u -d @"$(playerctl position)" +%M:%S`
+)
+(defpoll total
+    :interval "1s"
+    `playerctl metadata mpris:length | awk '{print int($1 / 1000000)}' | xargs -I{} date -u -d @{} +%M:%S`
+)
+(defpoll username
+    :interval "24h"
+    `bash /home/revan/fuckeww.sh`
+)
+
+(defpoll albumart
+    :interval 100
+    `playerctl metadata mpris:artUrl | sed 's|^file://||'`
+)
+(defpoll title
+    :interval 1000
+    `playerctl metadata title`
+)
+(defpoll artist
+    :interval 1000
+    `playerctl metadata artist`
+)
+
+(defpoll songposition
+    :interval 1000
+    `echo "$(playerctl position) $(playerctl metadata mpris:length)" | awk '{printf $1*1000000*100/$2}'`
+)

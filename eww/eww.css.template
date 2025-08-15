@@ -1,0 +1,93 @@
+
+.modeWindow, .terminalWindow {background-color: transparent}
+.modeWidget, .terminalWidget {
+    background-color: alpha(#bg1, 0.7);
+    font-size: 14px;
+    border-radius: 10px 10px 0px 0px;
+    border: 3px solid #red;
+    border-bottom: 0px;
+    color: #txt;
+}
+
+.player {
+    font-size: 14px;
+    border-radius: 10px;
+    border: 3px solid #red;
+    background-color: transparent;
+}
+
+.quotesub{
+    font-family: "Times New Roman";
+    font-weight: bold;
+    font-style: italic;
+    font-size: 16px;
+    padding: 10px 15px 10px 15px;
+}
+
+.author {
+    font-size: 14px;
+    color: #st1;
+    background-color: transparent;
+    font-family: "Times New Roman";
+    font-weight: bold;
+    font-style: italic;
+    padding: 0px 15px 10px 15px;
+
+}
+
+.quotewidgets {
+    background-color: alpha(#bg1, 0.7);
+    border: 3px solid #red;
+    border-radius: 10px;
+}
+
+.dashboardButton{font-family: "SF Pro";}
+
+.pfp{border: 3px solid #red; border-radius: 100%;}
+.dashboard{background-color: transparent}
+.fullwidget{
+    background-color: alpha(#bg1, 0.7);
+    padding: 10px;
+    border-radius: 10px;
+    border: 3px solid #red
+}
+.batcircle, .ramcircle, .cpucircle{
+    border-radius: 10px;
+    background-color: #bg1
+}
+.batcircle{color: #green}
+.ramcircle{color: #yellow}
+.cpucircle{color:#9ccfd8}
+
+.bluetoothbutton{background-color: #blue; color:#bg1}
+.networkbutton{background: #red; color:#bg1}
+
+.volumebar trough, .brightbar trough{background-color:#2a273f}
+.volumebar {background-color:#red}
+.brightbar {color:#f6c177}
+
+.prevbutton, .nextbutton{border-radius:10px;background-color:#red;color:#bg1}
+.bigplayingtitle{ margin:10px 10px 5px 10px}
+.bigplayingartist{margin:0px 10px 5px 10px}
+.playingBig{background-color: transparent}
+.playingInfo{
+    border-radius: 10px;
+    background-color: alpha(#bg1, 0.7);
+    border: 3px solid #red
+}
+.musicButton{background:#c4a7e7; color:#bg1}
+.musicbuttonbox{margin:0px 10px 10px 10px}
+.bigalbumart{
+    border-radius:10px 0px 0px 10px;
+}
+.song_prog scale trough highlight {
+    background-color: #green;
+	border-radius: 8px;
+}
+.song_prog scale trough {
+	all: unset;
+    background-color: #mauve;	
+    border-radius: 8px;
+}
+
+.song_prog{color: #mauve}

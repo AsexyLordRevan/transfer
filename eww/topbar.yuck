@@ -1,0 +1,328 @@
+(defwindow workspaces
+    :monitor 0
+    :stacking "ov"
+    :exclusive false
+    :focusable false
+    :geometry (geometry
+        :width 80
+        :height 33
+        :anchor "left bottom"
+    )
+    (workspacewidget)
+)
+
+(defpoll workspacevar :interval 10 "bash ~/.config/asexy/scripts/eww/workspaces")
+
+(defwidget workspacewidget []
+    (box
+        (literal :content workspacevar)
+    )
+)
+
+
+(defwindow hardware
+    :monitor 0
+    :stacking "fg"
+    :exclusive false
+    :class "hardwarewindow"
+    :focusable false
+    :geometry (geometry
+        :width 200
+        :height 30
+        :x 00
+        :y 00
+        :anchor "left bottom"
+    )
+    (hardware)
+)
+(defvar hardwarehover false)
+(defvar keyboard "SPA")
+(defpoll playing :interval 10 `playerctl status`)
+(defwidget hardware []
+    (eventbox
+        :onhover "eww update hardwarehover=true"
+        :onhoverlost "eww update hardwarehover=false"
+        :class "hardware"
+        :valign "end"
+        :vexpand "false" :hexpand "false" 
+        :orientation "vertical"
+        :space-evenly false
+        (box :orientation "vertical" :space-evenly false :valign "end"
+            (revealer
+                :reveal hardwarehover
+                :transition "slideup"
+                :duration 1000
+                (box :space-evenly false :orientation "vertical" :valign "start"
+                    (box :orientation "horizontal" :space-evenly false
+                        :height 50
+                        (circular-progress
+                            :value {cpupercent}
+                            :thickness 5
+                            :start-at 75
+                            :clockwise false
+                            :width 50
+                        )
+                        (circular-progress
+                            :value {rampercent}
+                            :thickness 5
+                            :start-at 75
+                            :width 50
+                            :clockwise false
+                        )
+                        (circular-progress
+                            :value {batpercent}
+                            :width 50
+                            :thickness 5
+                            :start-at 75
+                            :clockwise false
+                        )
+                    )
+                    (box
+                        :orientation "horizontal"
+                        :space-evenly false
+                        :halign "center"
+                        :valign "center"
+                        (label :text "Temp: " :halign "start")
+                        (progress
+                            :value 50
+                            :class "song_prog"
+                            :orientation "h"
+                        )
+                        (label :text {intemp} :halign "end")
+                    )
+                    (box
+                        :orientation "horizontal"
+                        :space-evenly false
+                        :halign "center"
+                        :valign "center"
+                        (label :text "Fan: " :halign "start")
+                        (progress
+                            :value 50
+                            :class "song_prog"
+                            :orientation "h"
+                        )
+                        (label :text {speed} :halign "end")
+                    )
+                    (box
+                        :orientation "horizontal"
+                        :space-evenly false
+                        :halign "center"
+                        :valign "center"
+                        (label :text " Lang: " :halign "start")
+                        (button 
+                            :onclick "hyprctl switchxkblayout"
+                            (label :text {keyboard} :halign "start")
+                        )
+                    )
+                    (box 
+                        :orientation "horizontal"
+                        :space-evenly false
+                        :halign "center"
+                        :valign "center"
+                        (image
+                            :class "bigalbumart"
+                            :path {albumart}
+                            :image-width 80 
+                        )
+                        (box
+                            :orientation "vertical"
+                            :space-evenly false
+                            :halign "start"
+                            (label
+                                :text {title}
+                            )
+                            (label
+                                :text {artist}
+                            )
+                            (box
+                                :orientation "horizontal"
+                                :space-evenly true
+                                (button
+                                    :onclick "playerctl previous"
+                                    :class "focused"
+                                    (label :text "◀" :class "focused")
+                                )
+                                (button
+                                    :onclick "playerctl play-pause"
+                                    :class "focused"
+                                    (label :text "P" :class "focused")
+                                )
+                                (button
+                                    :onclick "playerctl next"
+                                    :class "focused"
+                                    (label :text "▶" :class "focused")
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+            (box
+                :class "hardware-header"
+                :vexpand "false" :hexpand "false" 
+                :width 100
+                :valign "end"
+                :halign "center"
+                :style "background-color: #ff0000"
+                :space-evenly true
+                (label :text "" :valign "end")
+                (label :text {playing} :valign "end")
+                (label :text {keyboard} :valign "end")
+            )
+        )
+    )
+)
+
+(defwindow power
+    :monitor 0
+    :stacking "fg"
+    :exclusive false
+    :class "powerwindow"
+    :focusable false
+    :geometry (geometry
+        :width 200
+        :height 30
+        :x 200
+        :y 00
+        :anchor "left bottom"
+    )
+    (powerwidget)
+)
+(defvar powerhover false)
+(defwidget powerwidget []
+    (eventbox
+        :onhover "eww update powerhover=true"
+        :onhoverlost "eww update powerhover=false"
+        :class "power"
+        :valign "end"
+        :vexpand "false" :hexpand "false" 
+        :orientation "vertical"
+        :space-evenly false
+        (box :orientation "vertical" :space-evenly false :valign "end"
+            (revealer
+                :reveal powerhover
+                :transition "slideup"
+                :duration 500
+                (box
+                    :space-evenly true
+                    :orientation "horizontal"
+                    (button
+                        :onclick "/usr/bin/powerprofilesctl set power-saver"
+                        (label :text "")
+                    )                      
+                    (label :text "—")
+                    (button
+                        :onclick "env DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS /usr/bin/powerprofilesctl set balanced"
+                        (label :text "")
+                    )                      
+                    (label :text "—")
+                    (button
+                        :onclick "/usr/bin/powerprofilesctl set performance"
+                        (label :text "")
+                    )
+                )
+            )
+            (box (label :text "gogo") (label :text "nog"))
+        )
+    )
+)
+
+(defwindow timeplus
+    :monitor 0
+    :stacking "fg"
+    :exclusive false
+    :class "timepluswindow"
+    :focusable false
+    :geometry (geometry
+        :width 300
+        :height 30
+        :x 400
+        :y 00
+        :anchor "right bottom"
+    )
+    (timewidget)
+)
+(defvar timehover false)
+(defvar selectmonth "date +%m")
+(defvar selectdate "date +%d")
+(defvar selectyear "date +%y")
+(defwidget timewidget []
+    (eventbox
+        :class "timeplus"
+        :valign "end"
+        :vexpand "false" :hexpand "false" 
+        :orientation "vertical"
+        :space-evenly false
+        :onhover "eww update timehover=true && eww update selectmonth=$(date +%m) && eww update selectdate=$(date +%d) && eww update selectyear=$(date +%y)"
+        :onhoverlost "eww update timehover=false"
+        (box :orientation "vertical" :space-evenly false :valign "end"
+            (revealer
+                :reveal timehover
+                :transition "slideup"
+                :duration 500
+                (box
+                    :orientation "vertical"
+                    :space-evenly false
+                    (box
+                        :orientation "horizontal"
+                        (label :text time :style "font-size: 24px")
+                        (label :text weathericon :style "font-size: 24px")
+                        (label :text weathertemp :style "font-size: 24px")
+                    )
+                    (box
+                        :orientation "horizontal"
+                        (box
+                            :orientation "horizontal"
+                            :space-evenly false
+                            (button
+                                :onclick "eww update selectdate=${selectdate - 1}"
+                                (label :text "<")
+                            )
+                            (label :text selectdate)
+                            (button
+                                :onclick "eww update selectdate=${selectdate + 1}"
+                                (label :text ">")
+                            )
+                            (button
+                                :onclick "eww update selectmonth=${selectmonth - 1}"
+                                (label :text "<")
+                            )
+                            (label :text selectmonth)
+                            (button
+                                :onclick "eww update selectmonth=${selectmonth + 1}"
+                                (label :text ">")
+                            )
+                            (button
+                                :onclick "eww update selectyear=${selectyear - 1}"
+                                (label :text "<")
+                            )
+                            (label :text selectyear)
+                            (button
+                                :onclick "eww update selectyear=${selectyear + 1}"
+                                (label :text ">")
+                            )
+                        )
+                    )
+                    (box
+                        :orientation "horizontal"
+                        :space-evenly false
+                        (label :text "oisjdf")
+                        (calendar
+                            :show-details false
+                            :show-heading false
+                            :show-day-names false
+                            :show-week-numbers false
+                            :day selectdate
+                            :month selectmonth
+                            :year selectyear
+                        )
+                    )
+                )
+            )
+            (box
+                (label :text time)
+                (label :text "bobo")
+            )
+        )
+    )
+)

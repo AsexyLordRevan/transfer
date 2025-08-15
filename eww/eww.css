@@ -1,0 +1,102 @@
+
+.modeWindow, .terminalWindow {background-color: transparent}
+.modeWidget, .terminalWidget {
+    background-color: alpha(#191724, 0.7);
+    font-size: 14px;
+    border-radius: 10px 10px 0px 0px;
+    border: 3px solid #eb6f92;
+    border-bottom: 0px;
+    color: #e0def4;
+}
+
+.player {
+    font-size: 14px;
+    border-radius: 10px;
+    border: 3px solid #eb6f92;
+    background-color: transparent;
+}
+
+.quotesub{
+    font-family: "Times New Roman";
+    font-weight: bold;
+    font-style: italic;
+    font-size: 16px;
+    padding: 10px 15px 10px 15px;
+}
+
+.author {
+    font-size: 14px;
+    color: #908caa;
+    background-color: transparent;
+    font-family: "Times New Roman";
+    font-weight: bold;
+    font-style: italic;
+    padding: 0px 15px 10px 15px;
+
+}
+
+.quotewidgets {
+    background-color: alpha(#191724, 0.7);
+    border: 3px solid #eb6f92;
+    border-radius: 10px;
+}
+
+.dashboardButton{font-family: "SF Pro";}
+
+.pfp{border: 3px solid #eb6f92; border-radius: 100%;}
+.dashboard{background-color: transparent}
+.fullwidget{
+    background-color: alpha(#191724, 0.7);
+    padding: 10px;
+    border-radius: 10px;
+    border: 3px solid #eb6f92
+}
+.batcircle, .ramcircle, .cpucircle{
+    border-radius: 10px;
+    background-color: #191724
+}
+.batcircle{color: #31748f}
+.ramcircle{color: #f6c177}
+.cpucircle{color:#9ccfd8}
+
+.bluedtoothbutton{background-color: #9ccfd8; color:#191724}
+.networkbutton{background: #eb6f92; color:#191724}
+
+.volumebar trough, .brightbar trough{background-color:#2a273f}
+.volumebar {background-color:#eb6f92}
+.brightbar {color:#f6c177}
+
+.prevbutton, .nextbutton{border-radius:10px;background-color:#eb6f92;color:#191724}
+.bigplayingtitle{ margin:10px 10px 5px 10px}
+.bigplayingartist{margin:0px 10px 5px 10px}
+.playingBig{background-color: transparent}
+.playingInfo{
+    border-radius: 0px 10px 10px 0px;
+    background-color: alpha(#191724, 0.7);
+    border-right: 3px solid #eb6f92;
+    border-top: 3px solid #eb6f92;
+    border-bottom: 3px solid #eb6f92
+
+}
+.musicButton{background:#c4a7e7; color:#191724}
+.musicbuttonbox{margin:0px 10px 10px 10px}
+.bigalbumart{
+    border-radius:10px 0px 0px 10px;
+}
+.song_prog scale trough highlight {
+    all:unset;
+    background-color: #31748f;
+	border-radius: 8px;
+}
+.song_prog scale trough {
+	all: unset;
+    background-color: #c4a7e7;	
+    border-radius: 8px;
+}
+.focused {
+    background-color: #eb6f92;
+    border-radius: 10px;
+    color: #191724;
+}
+.song_prog{color: #c4a7e7}
+.hardware{background-color: transparent}

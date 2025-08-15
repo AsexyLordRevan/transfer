@@ -1,0 +1,55 @@
+source=~/.config/hypr/colours.conf
+
+background {
+	monitor =
+	color = $bg1
+}
+
+image {
+	path = /home/revan/Downloads/colouredmilitiawoman.png
+	position = 512, 0
+	size = 1600
+	rounding = 0
+	border_size = 0
+	monitor = 
+}
+
+input-field {
+	fade_on_empty = false
+	position = -768, 0
+	monitor = eDP-1
+	size = 250, 50	
+	inner_color = $bg2
+	outer_color = $red
+	font_color = $txt
+	fail_color = $red
+	fail_text = Nope!
+	placeholder_text = ¿Password?
+	check_color = $yellow
+}
+
+label {
+	text = ¡No pasarán!
+	color = $green
+	font_size = 68
+	position = -768, -400
+	font_family= SF Pro
+}
+
+label {
+	text = $TIME
+	color = $txt
+	font_size = 225
+	font_family = SF Pro Bold
+	position = -768, 300
+}
+
+label {
+	text = cmd[update:1000] echo "$(date +"%A %d de %B")"
+	color = $green
+	font_size= 48
+	font_family = SF Pro Bold
+	position = -768, 500
+}
+
+

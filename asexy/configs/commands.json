@@ -1,0 +1,9 @@
+[
+    "killall waybar",
+    "swww-daemon",
+    "python ~/.config/asexy/scripts/pyinit.py",
+    "kitten themes --reload-in=all asexy"
+]
+
+
+

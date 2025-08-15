@@ -1,0 +1,107 @@
+(defwindow bottomBar
+    :monitor 0
+    :stacking "ov"
+    :exclusive false
+    :focusable false
+    :geometry (geometry
+        :x 0
+        :y "0%"
+        :width "100%"
+        :height 30
+        :anchor "center bottom"
+    )
+    (bottomWidgets)
+)
+
+(defwidget bottomWidgets []
+    (box
+        :orientation "horizontal"
+        :spacing 10
+        (button
+            :onclick "brightnessctl --device=acpi_video0 set '5-' "
+            (label
+                :class "brightnessDown"
+                :text ""
+            )
+        )
+        (button
+            :onclick "brightnessctl --device=acpi_video0 set '5+' "
+            (label
+                :class "brightnessDown"
+                :text "󰖨"
+            )
+        )
+        
+        (button
+            :onclick "rofi -show drun"
+            (label
+                :class "dashboardButton"
+                :text ""
+            )
+        )
+        (button
+            :onclick " brightnessctl --device=apple::kbd_backlight set '50s-'"
+            (label
+                :class "modeButton"
+                :text "-"
+            )
+        )
+        (button
+            :onclick " brightnessctl --device=apple::kbd_backlight set '50s+'"
+            (label
+                :class "dashboardButton"
+                :text "+"
+            )
+        )
+        (button
+            :onclick "playerctl previous"
+            (label
+                :class "modeButton"
+                :text "󰑟"
+            )
+        )
+        (button
+            :onclick "playerctl play-pause"
+            (label
+                :class "modeButton"
+                :text "󰐊"
+            )
+        )
+        (button
+            :onclick "playerctl next"
+            (label
+                :class "modeButton"
+                :text "󰈑"
+            )
+        )
+        (button
+            :onclick "pactl -- set-sink-mute 0 toggle"
+            (label
+                :class "modeButton"
+                :text "󰖁"
+            )
+        )
+        (button
+            :onclick "pactl -- set-sink-volume 0 -5%"
+            (label
+                :class "volumeDown"
+                :text "󰕿"
+            )
+        )
+        (button
+            :onclick "pactl -- set-sink-volume 0 +5%"
+            (label
+                :class "volumeUp"
+                :text "󰕾"
+            )
+        )
+        (button
+            :onclick "powermenu"
+            (label
+                :class "volumeDown"
+                :text "󰐥"
+            )
+        )
+
+    )
+)
